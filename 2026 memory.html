@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我们的首尔之旅 Our Seoul Trip ✈️</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FFF8F0;--peach:#FFD4B2;--coral:#FF6B6B;--gold:#F4A261;--teal:#2A9D8F;--navy:#1A1A2E;--soft-navy:#264653;--white:#FFFFFF;--gray:#6B7280;--light-gray:#F3F4F6;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--navy);line-height:1.6;-webkit-text-size-adjust:100%}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:560px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:linear-gradient(135deg,#1A1A2E 0%,#16213E 50%,#0F3460 100%);padding:1.5rem}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(255,107,107,.15) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(42,157,143,.15) 0%,transparent 60%)}
+.hero-stars{position:absolute;inset:0;overflow:hidden}
+.star{position:absolute;background:white;border-radius:50%;animation:twinkle 3s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.2;transform:scale(1)}50%{opacity:1;transform:scale(1.5)}}
+.hero-content{position:relative;z-index:2;width:100%;max-width:600px}
+.hero-eyebrow{font-family:'DM Mono',monospace;font-size:.75rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:1.2rem;opacity:0;animation:fadeUp .8s ease forwards .3s}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,8vw,5rem);color:var(--white);line-height:1.1;margin-bottom:.4rem;opacity:0;animation:fadeUp .8s ease forwards .5s}
+.hero-title span{color:var(--coral);font-style:italic}
+.hero-sub-cn{font-size:clamp(1rem,3vw,1.3rem);color:rgba(255,255,255,.8);margin-bottom:.4rem;opacity:0;animation:fadeUp .8s ease forwards .65s;font-weight:300;letter-spacing:.1em}
+.hero-subtitle{font-size:clamp(.85rem,2.5vw,1rem);color:rgba(255,255,255,.6);margin-bottom:2rem;opacity:0;animation:fadeUp .8s ease forwards .75s}
+.hero-dates{display:inline-flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2);border-radius:50px;padding:.65rem 1.5rem;color:var(--white);font-family:'DM Mono',monospace;font-size:clamp(.7rem,2vw,.85rem);letter-spacing:.05em;opacity:0;animation:fadeUp .8s ease forwards .9s;white-space:nowrap;flex-wrap:wrap;justify-content:center;gap:.4rem}
+.hero-scroll{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;color:rgba(255,255,255,.4);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;opacity:0;animation:fadeUp .8s ease forwards 1.2s}
+.scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,rgba(255,255,255,.5),transparent);animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:.3}50%{opacity:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+
+/* STICKY NAV */
+.sticky-nav{position:sticky;top:0;z-index:100;background:var(--white);box-shadow:0 2px 20px rgba(0,0,0,.08)}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.7rem 1rem;gap:.75rem;flex-wrap:wrap}
+.nav-title{font-family:'Playfair Display',serif;font-size:.95rem;color:var(--navy);white-space:nowrap;flex-shrink:0}
+.nav-title small{font-family:'DM Sans',sans-serif;font-size:.7rem;color:var(--gray);display:block;font-style:normal}
+.day-pills{display:flex;gap:.35rem;overflow-x:auto;scrollbar-width:none;flex-wrap:nowrap}
+.day-pills::-webkit-scrollbar{display:none}
+.day-pill{background:var(--light-gray);border:none;border-radius:20px;padding:.3rem .8rem;font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:500;color:var(--gray);cursor:pointer;white-space:nowrap;transition:all .2s;flex-shrink:0}
+.day-pill:hover{background:var(--peach);color:var(--navy)}
+.day-pill.active{background:var(--coral);color:white}
+
+/* MAIN */
+.main{max-width:1100px;margin:0 auto;padding:0 1rem 4rem}
+
+/* SECTION HEADER */
+.sec-head{display:flex;align-items:center;gap:.9rem;margin:2.5rem 0 1.2rem}
+.sec-head h2{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,4vw,1.6rem);color:var(--navy);white-space:nowrap}
+.sec-head small{font-size:.82rem;color:var(--gray);font-weight:400;display:block;margin-top:.1rem}
+.sec-line{flex:1;height:1px;background:linear-gradient(to right,var(--peach),transparent);min-width:20px}
+
+/* OVERVIEW */
+.overview-card{background:var(--white);border-radius:16px;padding:1.5rem;margin:2rem 0;box-shadow:0 4px 20px rgba(0,0,0,.06);border:1px solid rgba(0,0,0,.04)}
+.overview-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:.8rem;margin-top:1.2rem}
+.ov-item{background:var(--cream);border-radius:10px;padding:.85rem;display:flex;flex-direction:column;gap:.25rem}
+.ov-icon{font-size:1.3rem}
+.ov-label{font-size:.65rem;color:var(--gray);text-transform:uppercase;letter-spacing:.1em}
+.ov-value{font-size:.9rem;font-weight:600;color:var(--navy)}
+.ov-sub{font-size:.72rem;color:var(--gray)}
+
+/* DAY GLANCE GRID */
+.glance-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.85rem;margin-bottom:2rem}
+
+/* HOTELS */
+.hotels-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.9rem;margin-bottom:2rem}
+.hotel-card{background:var(--white);border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,.07);border:1px solid rgba(0,0,0,.05);transition:transform .2s;overflow:hidden}
+.hotel-card:hover{transform:translateY(-2px)}
+.hotel-body{padding:1rem 1.1rem}
+.hotel-name{font-weight:700;font-size:.95rem;margin-bottom:.2rem;color:var(--navy)}
+.hotel-loc{font-size:.75rem;color:var(--gray);margin-bottom:.6rem}
+.hotel-tags{display:flex;flex-wrap:wrap;gap:.3rem}
+.hotel-tag{background:var(--light-gray);border-radius:20px;padding:.15rem .5rem;font-size:.68rem;color:var(--soft-navy)}
+
+/* FLIGHTS */
+.flight-card{background:var(--navy);border-radius:14px;padding:1rem 1.4rem;display:flex;align-items:center;justify-content:space-between;margin-bottom:.55rem;flex-wrap:wrap;gap:.75rem}
+.flight-route{display:flex;align-items:center;gap:.75rem;color:white}
+.flight-city{font-family:'DM Mono',monospace;font-size:1.25rem;font-weight:500}
+.flight-city-cn{font-size:.62rem;color:rgba(255,255,255,.5);margin-top:.1rem}
+.flight-arrow{color:var(--gold);font-size:1rem}
+.flight-right{text-align:right}
+.flight-num{font-family:'DM Mono',monospace;font-size:.9rem;color:var(--gold);font-weight:500}
+.flight-info{color:rgba(255,255,255,.65);font-size:.78rem;margin-top:.15rem;line-height:1.4}
+
+/* EXCHANGE */
+.exch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(95px,1fr));gap:.5rem;margin-bottom:1.8rem}
+.exch-item{background:var(--white);border-radius:10px;padding:.6rem;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.exch-foreign{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--gray)}
+.exch-rm{font-family:'DM Mono',monospace;font-size:.88rem;font-weight:700;color:var(--teal)}
+
+/* WEATHER */
+.weather-bar{background:linear-gradient(135deg,#E0F2FE,#BAE6FD);border-radius:12px;padding:1rem 1.4rem;display:flex;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:1.4rem}
+.weather-icon{font-size:2rem;flex-shrink:0;margin-top:.1rem}
+.weather-info{flex:1;min-width:200px}
+.weather-info h4{font-size:.9rem;font-weight:600;color:#0C4A6E;margin-bottom:.2rem}
+.weather-info p{font-size:.78rem;color:#0369A1;line-height:1.5}
+.weather-tips{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.6rem}
+.wtip{background:rgba(255,255,255,.7);border-radius:20px;padding:.15rem .55rem;font-size:.7rem;color:#0369A1}
+
+/* DAY CARDS */
+.day-card{background:var(--white);border-radius:16px;overflow:hidden;box-shadow:0 3px 16px rgba(0,0,0,.06);border:1px solid rgba(0,0,0,.04);margin-bottom:1.2rem}
+.day-header{padding:1rem 1.4rem;display:flex;align-items:center;gap:1rem;cursor:pointer;transition:background .2s;user-select:none}
+.day-header:hover{background:var(--light-gray)}
+.day-num{width:48px;height:48px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
+.day-num-big{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:white;line-height:1}
+.day-num-lbl{font-size:.5rem;color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:.1em}
+.day-meta{flex:1;min-width:0}
+.day-title-en{font-weight:600;font-size:.92rem;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.day-title-cn{font-size:.78rem;color:var(--gray);margin-top:.08rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.day-date{font-size:.7rem;color:var(--gray);margin-top:.12rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.day-weather{font-size:.78rem;color:var(--gray);white-space:nowrap;flex-shrink:0}
+.day-toggle{width:24px;height:24px;border-radius:50%;background:var(--light-gray);display:flex;align-items:center;justify-content:center;font-size:.66rem;transition:all .3s;flex-shrink:0}
+.day-card.open .day-toggle{transform:rotate(180deg);background:var(--peach)}
+.day-body{display:none;padding:0 1.4rem 1.4rem}
+.day-card.open .day-body{display:block}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:1.5rem;margin-top:.8rem}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--peach),transparent);border-radius:2px}
+.tl-item{position:relative;margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid var(--light-gray)}
+.tl-item:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.tl-dot{position:absolute;left:-2rem;top:.3rem;width:10px;height:10px;border-radius:50%;background:var(--coral);border:2px solid white;box-shadow:0 0 0 2px var(--peach)}
+.tl-time{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--gold);font-weight:500;margin-bottom:.15rem;letter-spacing:.04em}
+.tl-act-en{font-weight:600;color:var(--navy);font-size:.92rem;margin-bottom:.05rem}
+.tl-act-cn{font-size:.78rem;color:var(--soft-navy);margin-bottom:.22rem;font-weight:500}
+.tl-desc-en{font-size:.83rem;color:var(--gray);line-height:1.55;margin-bottom:.15rem}
+.tl-desc-cn{font-size:.77rem;color:#9CA3AF;line-height:1.5;margin-bottom:.4rem}
+.tl-tags{display:flex;flex-wrap:wrap;gap:.28rem;margin-top:.3rem}
+.tag{display:inline-flex;align-items:center;gap:.2rem;padding:.15rem .48rem;border-radius:20px;font-size:.7rem;font-weight:500;line-height:1.4}
+.tf{background:#FEE2E2;color:#DC2626}
+.tt{background:#DBEAFE;color:#2563EB}
+.tc{background:#F3E8FF;color:#7C3AED}
+.ts{background:#FCE7F3;color:#DB2777}
+.th{background:#ECFDF5;color:#059669}
+.tv{background:#FEF3C7;color:#D97706}
+.tsp{background:#E0F2FE;color:#0284C7}
+.tn{background:#EDE9FE;color:#6D28D9}
+
+/* MEAL OPTIONS */
+.meal-opts{margin-top:.6rem;border-radius:10px;overflow:hidden;border:1px solid var(--light-gray)}
+.meal-opts-hdr{background:var(--light-gray);padding:.35rem .8rem;font-size:.68rem;font-weight:600;color:var(--gray);text-transform:uppercase;letter-spacing:.1em}
+.meal-opt{display:flex;align-items:flex-start;gap:.6rem;padding:.6rem .8rem;border-bottom:1px solid var(--light-gray);transition:background .15s}
+.meal-opt:last-child{border-bottom:none}
+.meal-opt:hover{background:var(--cream)}
+.mr{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.66rem;font-weight:700;flex-shrink:0;margin-top:.1rem}
+.r1{background:#FEF3C7;color:#D97706}
+.r2{background:var(--light-gray);color:var(--gray)}
+.r3{background:var(--light-gray);color:var(--gray)}
+.rb{background:#ECFDF5;color:#059669}
+.meal-name-en{font-weight:600;font-size:.85rem;line-height:1.3}
+.meal-name-cn{font-size:.72rem;color:var(--soft-navy);margin-bottom:.15rem}
+.meal-det{font-size:.75rem;color:var(--gray);line-height:1.4}
+
+/* EDIT & SAVE */
+.edit-toggle{position:fixed;bottom:1.2rem;right:1.2rem;z-index:1000;display:flex;flex-direction:column;gap:.35rem;align-items:flex-end}
+.edit-btn{background:var(--navy);color:white;border:none;border-radius:50px;padding:.55rem 1.1rem;font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:.35rem;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:all .2s}
+.edit-btn:hover{transform:translateY(-2px)}
+.edit-btn.active{background:var(--teal)}
+.save-btn{background:var(--coral);color:white;border:none;border-radius:50px;padding:.55rem 1.1rem;font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:600;cursor:pointer;display:none;align-items:center;gap:.35rem;box-shadow:0 4px 16px rgba(255,107,107,.3);transition:all .2s}
+.save-btn:hover{transform:translateY(-2px)}
+.save-btn.vis{display:flex}
+.edit-banner{display:none;position:fixed;top:0;left:0;right:0;z-index:999;background:var(--gold);color:var(--navy);text-align:center;padding:.4rem 1rem;font-size:.78rem;font-weight:600}
+.edit-banner.vis{display:block}
+[contenteditable="true"]{outline:none;border-radius:3px;transition:background .2s;cursor:text}
+[contenteditable="true"]:hover{background:rgba(255,209,178,.3)}
+[contenteditable="true"]:focus{background:rgba(255,209,178,.5);outline:2px solid var(--gold);outline-offset:2px}
+
+/* FADE IN */
+.fi{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+.fi.vis{opacity:1;transform:translateY(0)}
+
+/* FOOTER */
+footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:2rem 1rem;font-size:.8rem}
+footer strong{color:var(--gold)}
+
+/* ── MOBILE ────────────────────────────────────── */
+@media(max-width:480px){
+  .main{padding:0 .85rem 3.5rem}
+  .nav-inner{padding:.6rem .85rem;gap:.5rem}
+  .nav-title{font-size:.85rem}
+  .day-pill{font-size:.7rem;padding:.28rem .65rem}
+  .flight-card{flex-direction:column;align-items:flex-start;gap:.5rem}
+  .flight-right{text-align:left}
+  .hotels-grid{grid-template-columns:1fr}
+  .glance-grid{grid-template-columns:1fr 1fr}
+  .overview-grid{grid-template-columns:1fr 1fr}
+  .exch-grid{grid-template-columns:repeat(3,1fr)}
+  .day-header{padding:.85rem 1rem;gap:.75rem}
+  .day-title-en{font-size:.85rem}
+  .day-title-cn{font-size:.72rem}
+  .day-date{display:none}
+  .day-weather{display:none}
+  .day-body{padding:0 1rem 1rem}
+  .timeline{padding-left:1.3rem}
+  .tl-dot{left:-1.75rem}
+  .tl-act-en{font-size:.87rem}
+  .tl-desc-en{font-size:.8rem}
+  .tl-desc-cn{font-size:.74rem}
+  .weather-bar{flex-direction:column;gap:.75rem}
+  .sec-head h2{font-size:1.2rem}
+  .hero-dates{font-size:.68rem;padding:.5rem 1rem}
+}
+
+@media(max-width:360px){
+  .glance-grid{grid-template-columns:1fr}
+  .overview-grid{grid-template-columns:1fr 1fr}
+  .exch-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ── TABLET ────────────────────────────────────── */
+@media(min-width:481px) and (max-width:768px){
+  .main{padding:0 1.2rem 4rem}
+  .hotels-grid{grid-template-columns:1fr 1fr}
+  .glance-grid{grid-template-columns:1fr 1fr}
+  .flight-card{flex-wrap:nowrap}
+}
+</style>
+</head>
+<body>
+
+<div class="edit-banner" id="editBanner">✏️ 编辑模式 Edit Mode — 点击文字即可编辑 · Click Save HTML to download</div>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-stars" id="stars"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">A Trip Worth Remembering ✨</div>
+    <h1 class="hero-title">Seoul, <span>JC</span>!</h1>
+    <div class="hero-sub-cn">首尔 · 韩国 · 四天三夜</div>
+    <p class="hero-subtitle">First time · New memories · Unforgettable</p>
+    <div class="hero-dates">✈️ &nbsp;2 Aug 2026&nbsp;→&nbsp;6 Aug 2026&nbsp;·&nbsp;Malaysia Airlines</div>
+  </div>
+  <div class="hero-scroll"><div class="scroll-line"></div>scroll</div>
+</section>
+
+<nav class="sticky-nav">
+  <div class="nav-inner">
+    <div class="nav-title">🇰🇷 首尔行程 Seoul Itinerary<small>3–6 August 2026</small></div>
+    <div class="day-pills">
+      <button class="day-pill active" onclick="goDay('day1',this)">Day 1 · 明洞夜</button>
+      <button class="day-pill" onclick="goDay('day2',this)">Day 2 · 景福宫</button>
+      <button class="day-pill" onclick="goDay('day3',this)">Day 3 · 圣水洞</button>
+      <button class="day-pill" onclick="goDay('day4',this)">Day 4 · COEX</button>
+    </div>
+  </div>
+</nav>
+
+<div class="main">
+
+<div class="sec-head fi"><h2>行程总览 <small>Trip Overview</small></h2><div class="sec-line"></div></div>
+<div class="overview-card fi">
+  <p style="font-size:.9rem;color:var(--gray);margin-bottom:1rem">4天3夜首尔初体验 · 文化 · 创意 · 购物 · 街食 · 夜景全覆盖<br><span style="font-size:.82rem;color:#9CA3AF">4D3N Seoul · Culture · Creative · Shopping · Street Food · Iconic Nightscapes</span></p>
+  <div class="overview-grid">
+    <div class="ov-item"><div class="ov-icon">✈️</div><div class="ov-label">航班 Flight</div><div class="ov-value">Malaysia Airlines</div><div class="ov-sub">MH066 / MH065</div></div>
+    <div class="ov-item"><div class="ov-icon">📅</div><div class="ov-label">日期 Dates</div><div class="ov-value">3–6 Aug 2026</div><div class="ov-sub">4天3夜 4D3N</div></div>
+    <div class="ov-item"><div class="ov-icon">🌡️</div><div class="ov-label">天气 Weather</div><div class="ov-value">29–30°C</div><div class="ov-sub">闷热多雨·带伞必备</div></div>
+    <div class="ov-item"><div class="ov-icon">💱</div><div class="ov-label">货币 Currency</div><div class="ov-value">韩元 KRW</div><div class="ov-sub">₩10,000 ≈ RM 27</div></div>
+    <div class="ov-item"><div class="ov-icon">🗺️</div><div class="ov-label">重点街区</div><div class="ov-value">5大区域</div><div class="ov-sub">明洞·梨泰院·景福宫·圣水·仁寺洞</div></div>
+  </div>
+</div>
+
+<div class="sec-head fi"><h2>四天概览 <small>4-Day at a Glance</small></h2><div class="sec-line"></div></div>
+<div class="glance-grid" class="fi">
+  <div style="background:linear-gradient(135deg,#E63946,#FF6B6B);border-radius:16px;padding:1.25rem;color:white">
+    <div style="font-family:'DM Mono',monospace;font-size:.7rem;opacity:.8;margin-bottom:.3rem">DAY 1 · 3 AUG (SUN)</div>
+    <div style="font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:.4rem">明洞 · 梨泰院 · 首尔N塔</div>
+    <div style="font-size:.78rem;opacity:.85">Myeongdong → Itaewon → N Seoul Tower</div>
+    <div style="font-size:.72rem;opacity:.7;margin-top:.4rem">街食初体验 · 多元文化 · 夜景开幕</div>
+  </div>
+  <div style="background:linear-gradient(135deg,#6B48FF,#9F7AEA);border-radius:16px;padding:1.25rem;color:white">
+    <div style="font-family:'DM Mono',monospace;font-size:.7rem;opacity:.8;margin-bottom:.3rem">DAY 2 · 4 AUG (MON)</div>
+    <div style="font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:.4rem">景福宫 · 北村 · 仁寺洞</div>
+    <div style="font-size:.78rem;opacity:.85">Palace → Bukchon → Insadong</div>
+    <div style="font-size:.72rem;opacity:.7;margin-top:.4rem">韩服体验 · 600年古村 · 文化街食</div>
+  </div>
+  <div style="background:linear-gradient(135deg,#2A9D8F,#52B788);border-radius:16px;padding:1.25rem;color:white">
+    <div style="font-family:'DM Mono',monospace;font-size:.7rem;opacity:.8;margin-bottom:.3rem">DAY 3 · 5 AUG (TUE)</div>
+    <div style="font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:.4rem">圣水洞 · 新沙洞 · 狎鸥亭</div>
+    <div style="font-size:.78rem;opacity:.85">Seongsu → Sinsa → Apgujeong → Han River</div>
+    <div style="font-size:.72rem;opacity:.7;margin-top:.4rem">创意街区 · 林荫购物 · 汉江치맥夜</div>
+  </div>
+  <div style="background:linear-gradient(135deg,#F4A261,#E76F51);border-radius:16px;padding:1.25rem;color:white">
+    <div style="font-family:'DM Mono',monospace;font-size:.7rem;opacity:.8;margin-bottom:.3rem">DAY 4 · 6 AUG (WED)</div>
+    <div style="font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:.4rem">COEX · 星空图书馆</div>
+    <div style="font-size:.78rem;opacity:.85">COEX Starfield Library → Last Lunch → ICN</div>
+    <div style="font-size:.72rem;opacity:.7;margin-top:.4rem">轻松收尾 · 打卡必去 · 飞回KL</div>
+  </div>
+</div>
+
+<div class="sec-head fi"><h2>航班 <small>Flights · Malaysia Airlines Only</small></h2><div class="sec-line"></div></div>
+<div class="fi">
+  <div class="flight-card">
+    <div class="flight-route"><div><div class="flight-city">KUL</div><div class="flight-city-cn">吉隆坡</div></div><div class="flight-arrow">→</div><div><div class="flight-city">ICN</div><div class="flight-city-cn">首尔仁川</div></div></div>
+    <div class="flight-right"><div class="flight-num">MH066</div><div class="flight-info" contenteditable="true">2 Aug · Departs 23:45 · Arrives 07:15+1 · T2 · ~6.5hrs</div></div>
+  </div>
+  <div class="flight-card" style="background:#264653;margin-top:.6rem">
+    <div class="flight-route"><div><div class="flight-city">ICN</div><div class="flight-city-cn">首尔仁川</div></div><div class="flight-arrow">→</div><div><div class="flight-city">KUL</div><div class="flight-city-cn">吉隆坡</div></div></div>
+    <div class="flight-right"><div class="flight-num">MH065</div><div class="flight-info" contenteditable="true">6 Aug · Departs 16:45 · Arrives 22:15 · T2 · ~6.5hrs</div></div>
+  </div>
+</div>
+
+<div class="sec-head fi"><h2>住宿 <small>Hotels · Gangnam · Book One of These</small></h2><div class="sec-line"></div></div>
+<p class="fi" style="color:var(--gray);font-size:.88rem;margin-bottom:1.1rem">One of the following bah — we're staying in <strong>Gangnam style lolll</strong> 🕺<br><span style="font-size:.8rem;color:#9CA3AF">以下任选其一，江南style入住！</span></p>
+<div class="hotels-grid fi">
+  <div class="hotel-card"><div class="hotel-body"><div class="hotel-name">Park Hyatt Seoul</div><div class="hotel-loc">📍 Gangnam · Samseong Stn 1min</div><div class="hotel-tags"><span class="hotel-tag">♾️ Infinity Pool 23F</span><span class="hotel-tag">💆 Ocelas Spa</span><span class="hotel-tag">🍸 Timber House Bar</span></div></div></div>
+  <div class="hotel-card"><div class="hotel-body"><div class="hotel-name">Josun Palace Gangnam</div><div class="hotel-loc">📍 Gangnam · Sinnonhyeon Stn</div><div class="hotel-tags"><span class="hotel-tag">🏛️ Heritage Design</span><span class="hotel-tag">🍽️ Parc Restaurant</span><span class="hotel-tag">🏊 Indoor Pool</span></div></div></div>
+  <div class="hotel-card"><div class="hotel-body"><div class="hotel-name">The Shilla Seoul</div><div class="hotel-loc">📍 Jangchung-dong · Michelin 3★ inside</div><div class="hotel-tags"><span class="hotel-tag">🌟 La Yeon Michelin 3★</span><span class="hotel-tag">🌿 Garden</span><span class="hotel-tag">💆 Spa</span></div></div></div>
+  <div class="hotel-card"><div class="hotel-body"><div class="hotel-name">Signiel Seoul</div><div class="hotel-loc">📍 Lotte World Tower · 76–101F</div><div class="hotel-tags"><span class="hotel-tag">🏙️ Highest Hotel KR</span><span class="hotel-tag">🌅 Han River View</span><span class="hotel-tag">⭐ Stay Restaurant</span></div></div></div>
+</div>
+
+<div class="weather-bar fi">
+  <div class="weather-icon">🌤️</div>
+  <div class="weather-info"><h4>8月首尔天气 · August Weather</h4><p>白天29–30°C · 体感35°C · 湿度79–84% · 偶有阵雨 · Feels like 35°C · Humid · Showers possible</p></div>
+  <div class="weather-tips"><span class="wtip">☂️ 折叠伞</span><span class="wtip">🧴 SPF50+</span><span class="wtip">🧥 薄外套</span><span class="wtip">💧 多补水</span><span class="wtip">🦟 防蚊液(汉江)</span></div>
+</div>
+
+<div class="sec-head fi"><h2>汇率 <small>KRW → RM Quick Reference</small></h2><div class="sec-line"></div></div>
+<div class="exch-grid fi">
+  <div class="exch-item"><div class="exch-foreign">₩10,000</div><div class="exch-rm">RM 27</div></div>
+  <div class="exch-item"><div class="exch-foreign">₩20,000</div><div class="exch-rm">RM 54</div></div>
+  <div class="exch-item"><div class="exch-foreign">₩50,000</div><div class="exch-rm">RM 135</div></div>
+  <div class="exch-item"><div class="exch-foreign">₩100,000</div><div class="exch-rm">RM 270</div></div>
+  <div class="exch-item"><div class="exch-foreign">₩200,000</div><div class="exch-rm">RM 540</div></div>
+  <div class="exch-item"><div class="exch-foreign">₩500,000</div><div class="exch-rm">RM 1,350</div></div>
+</div>
+<div class="sec-head fi" id="day1" style="margin-top:2rem"><h2>Day 1 <small>3 August (Sun) · Route: Hotel → 明洞 → 梨泰院 → N首尔塔 → Hotel</small></h2><div class="sec-line"></div></div>
+<div class="day-card fi">
+  <div class="day-header" onclick="toggleDay(this)">
+    <div class="day-num" style="background:linear-gradient(135deg,#E63946,#FF6B6B)"><div class="day-num-big">1</div><div class="day-num-lbl">Day</div></div>
+    <div class="day-meta">
+      <div class="day-title-en" contenteditable="true">Arrival · Myeongdong · Itaewon · N Seoul Tower</div>
+      <div class="day-title-cn" contenteditable="true">到达 · 明洞街食 · 梨泰院 · N首尔塔夜景</div>
+      <div class="day-date">3 August (Sun) · Route: Hotel → 明洞 → 梨泰院 → N首尔塔 → Hotel</div>
+    </div>
+    <div class="day-weather">🌤️ 29°C</div>
+    <div class="day-toggle">▼</div>
+  </div>
+  <div class="day-body">
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">07:15 AM</div>
+        <div class="tl-act-en" contenteditable="true">Arrive Incheon Airport (ICN) Terminal 2</div>
+        <div class="tl-act-cn" contenteditable="true">抵达仁川国际机场 T2</div>
+        <div class="tl-desc-en" contenteditable="true">MH066 lands. Immigration, collect bags, find hotel driver at Arrival Hall. ~1 hour drive to Gangnam hotel.</div>
+        <div class="tl-desc-cn" contenteditable="true">MH066落地。过关、取行李、在到达大厅找酒店司机。车程约1小时至江南酒店。</div>
+        <div class="tl-tags"><span class="tag tt">🚗 私家车接机 ~₩150,000</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">08:30 AM</div>
+        <div class="tl-act-en" contenteditable="true">Hotel Check-In + Breakfast</div>
+        <div class="tl-act-cn" contenteditable="true">酒店入住 + 早餐</div>
+        <div class="tl-desc-en" contenteditable="true">Request early check-in. Grab breakfast at the hotel restaurant. Take your time — you just flew 6.5 hours.</div>
+        <div class="tl-desc-cn" contenteditable="true">申请提前入住。在酒店餐厅用早餐。慢慢来——刚飞了6.5小时。</div>
+        <div class="tl-tags"><span class="tag th">🏨 酒店早餐</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">12:00 PM</div>
+        <div class="tl-act-en" contenteditable="true">Head to Myeongdong 明洞</div>
+        <div class="tl-act-cn" contenteditable="true">出发明洞 · 首尔最经典街区</div>
+        <div class="tl-desc-en" contenteditable="true">Taxi ~20 min from Gangnam (₩20,000). Myeongdong is Seoul's most iconic shopping and street food district — the perfect first Seoul experience. K-beauty flagships (Innisfree, Etude, Laneige, Sulwhasoo) all here.</div>
+        <div class="tl-desc-cn" contenteditable="true">从江南打的约20分钟（₩20,000）。明洞是首尔最经典的购物及街头美食区——完美的首尔初体验。韩国美妆旗舰店（悦诗风吟、爱丽小屋、兰芝、雪花秀）全在这里。</div>
+        <div class="tl-tags"><span class="tag tt">🚕 ₩20,000</span><span class="tag ts">🛍️ K-Beauty 旗舰店</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">12:30 PM – 2:30 PM</div>
+        <div class="tl-act-en" contenteditable="true">Myeongdong Street Food + Shopping</div>
+        <div class="tl-act-cn" contenteditable="true">明洞街食 + 购物</div>
+        <div class="tl-desc-en" contenteditable="true">Walk and eat — the stalls are the experience.</div>
+        <div class="tl-desc-cn" contenteditable="true">边走边吃——摊位就是明洞的精髓。</div>
+        <div class="meal-opts"><div class="meal-opts-hdr">🍢 明洞必吃街食 Must-Try Street Food</div><div class="meal-opt"><div class="mr r1">1</div><div><div class="meal-name-en" contenteditable="true">🌀 Tornado Potato 龙卷风薯条</div><div class="meal-name-cn" contenteditable="true"></div><div class="meal-det" contenteditable="true">Most iconic Myeongdong street food. Spiral fried potato. ₩3,000–5,000 (RM8–14)</div></div></div><div class="meal-opt"><div class="mr r2">2</div><div><div class="meal-name-en" contenteditable="true">🍢 Rose Tteokbokki 奶油辣炒年糕</div><div class="meal-name-cn" contenteditable="true"></div><div class="meal-det" contenteditable="true">2026 most viral. Cream + spicy sauce. ₩5,000–8,000 (RM14–22)</div></div></div><div class="meal-opt"><div class="mr r3">3</div><div><div class="meal-name-en" contenteditable="true">🥚 Gyeran-ppang 鸡蛋面包</div><div class="meal-name-cn" contenteditable="true"></div><div class="meal-det" contenteditable="true">Warm egg bread. Simple and comforting. ₩2,000 (RM5)</div></div></div><div class="meal-opt"><div class="mr rb">✓</div><div><div class="meal-name-en" contenteditable="true">🍦 Corn Soft Serve 玉米冰淇淋</div><div class="meal-name-cn" contenteditable="true"></div><div class="meal-det" contenteditable="true">Served in a corn cup. Great for the heat. ₩2,000–3,000 (RM5–8)</div></div></div></div><div class="tl-tags"><span class="tag tv">🔥 2026 Viral Street Food</span><span class="tag ts">💄 K-Beauty Shopping</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">3:00 PM</div>
+        <div class="tl-act-en" contenteditable="true">Lunch · Myeongdong Area</div>
+        <div class="tl-act-cn" contenteditable="true">午餐 · 明洞区</div>
+        <div class="tl-desc-en" contenteditable="true"></div>
+        <div class="tl-desc-cn" contenteditable="true"></div>
+        <div class="meal-opts"><div class="meal-opts-hdr">🍽️ 午餐选项 Lunch</div><div class="meal-opt"><div class="mr r1">1</div><div><div class="meal-name-en" contenteditable="true">Myeongdong Kyoja 明洞教子</div><div class="meal-name-cn" contenteditable="true">首尔最有名刀切面 · 50年老字号</div><div class="meal-det" contenteditable="true">Kalguksu noodles + mandu. Queue fast. Walk-in. ₩10,000–15,000 (RM27–40)/pax</div></div></div><div class="meal-opt"><div class="mr r2">2</div><div><div class="meal-name-en" contenteditable="true">Myeongdong Walk-in Korean BBQ</div><div class="meal-name-cn" contenteditable="true">明洞街边烤肉</div><div class="meal-det" contenteditable="true">Multiple options on main street. ₩15,000–30,000 (RM40–81)/pax</div></div></div></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">4:30 PM</div>
+        <div class="tl-act-en" contenteditable="true">이태원 Itaewon · Multicultural District</div>
+        <div class="tl-act-cn" contenteditable="true">梨泰院 · 首尔多元文化街区</div>
+        <div class="tl-desc-en" contenteditable="true">Taxi ~10 min from Myeongdong (₩10,000). International restaurants, vintage shops, antique furniture street — a very different energy from the rest of Seoul. Walk Itaewon-ro and side alleys (Gyeongnidan-gil for cafés and boutiques).</div>
+        <div class="tl-desc-cn" contenteditable="true">从明洞打的约10分钟（₩10,000）。国际餐厅、古着店、古董家具街——与首尔其他地方截然不同的多元文化氛围。逛梨泰院路主街和小巷（经理单街有好咖啡和精品店）。</div>
+        <div class="tl-tags"><span class="tag ts">🛍️ Vintage · Antique · Boutiques</span><span class="tag tf">🌍 International Food</span><span class="tag tt">🚕 ₩10,000 from Myeongdong</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">6:30 PM</div>
+        <div class="tl-act-en" contenteditable="true">Quick Freshen Up · Back to Hotel</div>
+        <div class="tl-act-cn" contenteditable="true">返回酒店 · 换衣</div>
+        <div class="tl-desc-en" contenteditable="true">Taxi ~15 min back to hotel (₩15,000). Quick shower and change. Tonight's N Seoul Tower is best at dusk into night.</div>
+        <div class="tl-desc-cn" contenteditable="true">打的约15分钟回酒店（₩15,000）。冲澡换衣。今晚首尔塔黄昏到夜间最美。</div>
+        <div class="tl-tags"><span class="tag tt">🚕 ₩15,000 back to hotel</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">7:30 PM</div>
+        <div class="tl-act-en" contenteditable="true">N Seoul Tower 남산타워 · Night View</div>
+        <div class="tl-act-cn" contenteditable="true">N首尔塔 · 夜景 + 爱情锁</div>
+        <div class="tl-desc-en" contenteditable="true">Taxi to Namsan Cable Car station ~20 min (₩20,000). Cable car up Namsan Mountain — 3 mins rising above Seoul rooftops. 360° views of the entire city. The Love Locks fence (자물쇠) — couples attach padlocks as a symbol of their bond. City lights fully on by 8pm. One of the most beautiful city views in Asia.</div>
+        <div class="tl-desc-cn" contenteditable="true">打的到南山缆车站约20分钟（₩20,000）。乘缆车上南山——3分钟越过首尔屋顶升上山顶。360°俯瞰全城。爱情锁（자물쇠）——情侣将爱情锁挂上栏杆。晚上8点城市灯光全亮。亚洲最美城市夜景之一。</div>
+        <div class="tl-tags"><span class="tag tc">🗼 Cable Car ₩15,000 return/person</span><span class="tag tn">🔒 Love Locks 爱情锁</span><span class="tag tn">🌆 360° Night View</span><span class="tag tt">🚕 ₩20,000 from hotel</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">9:30 PM</div>
+        <div class="tl-act-en" contenteditable="true">Dinner · Itaewon or Back to Hotel</div>
+        <div class="tl-act-cn" contenteditable="true">晚餐 · 梨泰院附近或回酒店</div>
+        <div class="tl-desc-en" contenteditable="true"></div>
+        <div class="tl-desc-cn" contenteditable="true"></div>
+        <div class="meal-opts"><div class="meal-opts-hdr">🍽️ 晚餐选项 Dinner Options</div><div class="meal-opt"><div class="mr r1">1</div><div><div class="meal-name-en" contenteditable="true">Itaewon Restaurant Strip</div><div class="meal-name-cn" contenteditable="true">梨泰院餐厅街 · 顺路</div><div class="meal-det" contenteditable="true">International options — Turkish, Italian, Korean fusion. Walk-in. ₩20,000–50,000 (RM54–135)/pax</div></div></div><div class="meal-opt"><div class="mr r2">2</div><div><div class="meal-name-en" contenteditable="true">Hotel Restaurant · Gangnam</div><div class="meal-name-cn" contenteditable="true">回酒店餐厅 · 轻松收尾</div><div class="meal-det" contenteditable="true">If tired after long Day 1, eat in-house. All hotels have good dining. ₩40,000–80,000 (RM108–216)/pax</div></div></div></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">11:00 PM</div>
+        <div class="tl-act-en" contenteditable="true">Back to Hotel · Sleep Well</div>
+        <div class="tl-act-cn" contenteditable="true">回酒店 · 好好休息</div>
+        <div class="tl-desc-en" contenteditable="true">Tomorrow is the cultural day — Gyeongbokgung + Bukchon + Insadong. Sleep early.</div>
+        <div class="tl-desc-cn" contenteditable="true">明天是文化日——景福宫+北村+仁寺洞。早点睡。</div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sec-head fi" id="day2" style="margin-top:2rem"><h2>Day 2 <small>4 August (Mon) · Route: Hotel → 景福宫 → 北村 → 仁寺洞 → Hotel · All walkable</small></h2><div class="sec-line"></div></div>
+<div class="day-card fi">
+  <div class="day-header" onclick="toggleDay(this)">
+    <div class="day-num" style="background:linear-gradient(135deg,#6B48FF,#9F7AEA)"><div class="day-num-big">2</div><div class="day-num-lbl">Day</div></div>
+    <div class="day-meta">
+      <div class="day-title-en" contenteditable="true">Gyeongbokgung Palace + Hanbok · Bukchon · Insadong</div>
+      <div class="day-title-cn" contenteditable="true">景福宫韩服体验 · 北村韩屋村 · 仁寺洞街食文化</div>
+      <div class="day-date">4 August (Mon) · Route: Hotel → 景福宫 → 北村 → 仁寺洞 → Hotel · All walkable</div>
+    </div>
+    <div class="day-weather">🌤️ 29°C</div>
+    <div class="day-toggle">▼</div>
+  </div>
+  <div class="day-body">
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">10:30 AM</div>
+        <div class="tl-act-en" contenteditable="true">Hotel Breakfast · Head Out</div>
+        <div class="tl-act-cn" contenteditable="true">酒店早餐 · 出发</div>
+        <div class="tl-desc-en" contenteditable="true">Target: be at Gyeongbokgung Station by 11:30am for Hanbok rental. Hanbok shops open from 9am — arriving at 10:30am gives plenty of time.</div>
+        <div class="tl-desc-cn" contenteditable="true">目标：11:30分抵达景福宫站租借韩服。韩服店9点开门——10:30出发时间充裕。</div>
+        
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">11:30 AM</div>
+        <div class="tl-act-en" contenteditable="true">Hanbok Rental · Gyeongbokgung Station Exit 4</div>
+        <div class="tl-act-cn" contenteditable="true">韩服租借 · 景福宫站4号出口</div>
+        <div class="tl-desc-en" contenteditable="true">Taxi ~25 min from Gangnam (₩25,000). Shops cluster around Exit 4. Recommended: Hanboknam or Daehan Hanbok — 500+ designs incl. hair styling. Wearing Hanbok = FREE palace entry. Dressing + hair ~45–60 min. Rental: 3–4 hours.</div>
+        <div class="tl-desc-cn" contenteditable="true">从江南打的约25分钟（₩25,000）。韩服店集中在景福宫站4号出口。推荐：Hanboknam或大韩韩服——超500款，含发型。穿韩服入宫免费。换装+发型约45–60分钟，租借3–4小时。</div>
+        <div class="tl-tags"><span class="tag tc">👘 ₩20,000–35,000/人 含发型</span><span class="tag tt">🚕 ₩25,000 from Gangnam</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">12:30 PM</div>
+        <div class="tl-act-en" contenteditable="true">경복궁 Gyeongbokgung Palace · Royal Guard Ceremony</div>
+        <div class="tl-act-cn" contenteditable="true">景福宫 · 朝鲜王朝主宫 · 换岗仪式</div>
+        <div class="tl-desc-en" contenteditable="true">Walk 5 min from Hanboknam to Gwanghwamun Gate. Built 1395. Must-see inside: Geunjeongjeon throne hall, Gyeonghoeru Pavilion on water, Hyangwonjeong Pavilion back garden (most photogenic). Royal Guard Changing Ceremony at 2pm — plan to be at Gwanghwamun Gate by then. ~1.5 hours inside.</div>
+        <div class="tl-desc-cn" contenteditable="true">从韩服店步行5分钟至光化门。建于1395年。宫内必看：勤政殿（王座殿）、庆会楼（水上阁）、香远亭（后花园最佳拍照）。下午2点换岗仪式——计划好在光化门守候。宫内游览约1.5小时。</div>
+        <div class="tl-tags"><span class="tag tc">🏯 穿韩服免费入场</span><span class="tag tc">🎖️ 换岗仪式 2pm</span><span class="tag tt">🚶 5min walk from Hanboknam</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">2:00 PM</div>
+        <div class="tl-act-en" contenteditable="true">북촌 한옥마을 Bukchon Hanok Village</div>
+        <div class="tl-act-cn" contenteditable="true">北村韩屋村 · 600年原味石巷</div>
+        <div class="tl-desc-en" contenteditable="true">10–15 min walk east from the palace. Still in Hanbok — perfect. Clay-tiled rooftops and stone alleys unchanged 600 years. Walk Gahoe-ro 11-gil for the iconic uphill alley view. Quiet residential area — keep voices low.</div>
+        <div class="tl-desc-cn" contenteditable="true">从宫殿向东步行10–15分钟。仍穿韩服——最完美组合。600年未变的瓦顶石巷。走嘉会路11街拍最经典画面。住宅区——请压低音量。</div>
+        <div class="tl-tags"><span class="tag tc">🏘️ Free · ~45min</span><span class="tag tt">🚶 10–15min walk from Palace</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">3:00 PM</div>
+        <div class="tl-act-en" contenteditable="true">Return Hanbok · Head to Insadong 仁寺洞</div>
+        <div class="tl-act-cn" contenteditable="true">归还韩服 · 前往仁寺洞</div>
+        <div class="tl-desc-en" contenteditable="true">Return Hanbok at shop near Gyeongbokgung Station. Then taxi or walk 10 min to Insadong — Seoul's traditional arts and culture street.</div>
+        <div class="tl-desc-cn" contenteditable="true">在景福宫站附近归还韩服。然后打的或步行10分钟至仁寺洞——首尔传统艺术文化街。</div>
+        <div class="tl-tags"><span class="tag tt">🚕 ₩5,000 or 🚶 10min walk</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">3:30 PM</div>
+        <div class="tl-act-en" contenteditable="true">Insadong · Street Food + Culture</div>
+        <div class="tl-act-cn" contenteditable="true">仁寺洞 · 街食 + 文化逛逛</div>
+        <div class="tl-desc-en" contenteditable="true">Galleries, craft shops, traditional tea houses, and great street snacks. Walk Insadong-gil main street and Ssamziegil courtyard.</div>
+        <div class="tl-desc-cn" contenteditable="true">画廊、工艺品店、传统茶馆，还有出色的街头小吃。逛仁寺洞街和包装马路（Ssamziegil庭院）。</div>
+        <div class="meal-opts"><div class="meal-opts-hdr">🍽️ 仁寺洞必吃 Insadong Food</div><div class="meal-opt"><div class="mr r1">1</div><div><div class="meal-name-en" contenteditable="true">Tosokchon 土俗村 Samgyetang</div><div class="meal-name-cn" contenteditable="true">土俗村参鸡汤 · 步行可达</div><div class="meal-det" contenteditable="true">Seoul's most famous ginseng chicken soup. Queue 20–40 min. ₩20,000–25,000 (RM54–67)/pax</div></div></div><div class="meal-opt"><div class="mr r2">2</div><div><div class="meal-name-en" contenteditable="true">Insadong Walk-in Korean</div><div class="meal-name-cn" contenteditable="true">仁寺洞街边韩食</div><div class="meal-det" contenteditable="true">Multiple casual options on Insadong-gil. ₩12,000–20,000 (RM32–54)/pax</div></div></div></div><div class="tl-tags"><span class="tag tv">🔥 Café Bora — 紫色抹茶Bingsu ₩18–22k</span><span class="tag tv">🔥 London Bagel Museum ₩6–8k</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">5:30 PM</div>
+        <div class="tl-act-en" contenteditable="true">Back to Hotel · Rest</div>
+        <div class="tl-act-cn" contenteditable="true">返回酒店 · 休息</div>
+        <div class="tl-desc-en" contenteditable="true">Taxi ~20 min back to Gangnam (₩20,000). Today was a full walking day — rest your feet.</div>
+        <div class="tl-desc-cn" contenteditable="true">打的约20分钟返回江南（₩20,000）。今天走了很多路——好好休息双脚。</div>
+        <div class="tl-tags"><span class="tag tt">🚕 ₩20,000 back to Gangnam</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">7:30 PM</div>
+        <div class="tl-act-en" contenteditable="true">Dinner · Gangnam Area</div>
+        <div class="tl-act-cn" contenteditable="true">晚餐 · 江南区</div>
+        <div class="tl-desc-en" contenteditable="true"></div>
+        <div class="tl-desc-cn" contenteditable="true"></div>
+        <div class="meal-opts"><div class="meal-opts-hdr">🍽️ 晚餐选项 Dinner</div><div class="meal-opt"><div class="mr r1">1</div><div><div class="meal-name-en" contenteditable="true">Maple Tree House 메이플트리하우스</div><div class="meal-name-cn" contenteditable="true">枫树屋 · 顶级韩牛烤肉</div><div class="meal-det" contenteditable="true">Premium Hanwoo wagyu BBQ. English-friendly, walk-in. ₩80,000–150,000 (RM216–405)/pax</div></div></div><div class="meal-opt"><div class="mr r2">2</div><div><div class="meal-name-en" contenteditable="true">Yeontabal 연타발 (Gangnam)</div><div class="meal-name-cn" contenteditable="true">炭火韩牛 · 首尔代表</div><div class="meal-det" contenteditable="true">Charcoal Hanwoo. Local favourite. ₩80,000–150,000 (RM216–405)/pax</div></div></div><div class="meal-opt"><div class="mr r3">3</div><div><div class="meal-name-en" contenteditable="true">Wangbijib 왕비집 (Gangnam)</div><div class="meal-name-cn" contenteditable="true">王妃家 · 优质猪肉BBQ</div><div class="meal-det" contenteditable="true">Quality pork BBQ, local crowd. Walk-in. ₩40,000–70,000 (RM108–189)/pax</div></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sec-head fi" id="day3" style="margin-top:2rem"><h2>Day 3 <small>5 August (Tue) · Route: Hotel → 圣水洞 → 新沙洞 → 狎鸥亭 → 汉江 → Hotel</small></h2><div class="sec-line"></div></div>
+<div class="day-card fi">
+  <div class="day-header" onclick="toggleDay(this)">
+    <div class="day-num" style="background:linear-gradient(135deg,#2A9D8F,#52B788)"><div class="day-num-big">3</div><div class="day-num-lbl">Day</div></div>
+    <div class="day-meta">
+      <div class="day-title-en" contenteditable="true">Seongsu-dong · Sinsa Garosu-gil · Apgujeong · Han River Picnic</div>
+      <div class="day-title-cn" contenteditable="true">圣水洞创意区 · 新沙洞林荫道 · 狎鸥亭购物 · 汉江치맥野餐夜</div>
+      <div class="day-date">5 August (Tue) · Route: Hotel → 圣水洞 → 新沙洞 → 狎鸥亭 → 汉江 → Hotel</div>
+    </div>
+    <div class="day-weather">🌦️ 29°C</div>
+    <div class="day-toggle">▼</div>
+  </div>
+  <div class="day-body">
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">10:30 AM</div>
+        <div class="tl-act-en" contenteditable="true">Hotel Breakfast</div>
+        <div class="tl-act-cn" contenteditable="true">酒店早餐</div>
+        <div class="tl-desc-en" contenteditable="true">No rush. Seongsu is best from 11am when shops open and energy builds.</div>
+        <div class="tl-desc-cn" contenteditable="true">不急。圣水洞上午11点后商店陆续开门，氛围才热起来。</div>
+        
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">11:30 AM</div>
+        <div class="tl-act-en" contenteditable="true">성수동 Seongsu-dong · Seoul's Brooklyn</div>
+        <div class="tl-act-cn" contenteditable="true">圣水洞 · 首尔的布鲁克林</div>
+        <div class="tl-desc-en" contenteditable="true">Taxi ~20 min from Gangnam (₩18,000). Former industrial warehouses transformed into Seoul's most creative neighbourhood. Independent Korean designers, concept stores, gallery-like cafés. Must-visit: Ader Error flagship, Gentle Monster (the store design itself is art), Nudake dessert café.</div>
+        <div class="tl-desc-cn" contenteditable="true">从江南打的约20分钟（₩18,000）。废弃工业仓库改建成首尔最具创意街区。独立设计师、概念店、艺廊式咖啡。必去：Ader Error旗舰店、Gentle Monster（店铺设计本身就是艺术）、Nudake甜品店。</div>
+        <div class="tl-tags"><span class="tag ts">🛍️ Ader Error · Gentle Monster</span><span class="tag tv">🎂 Nudake ₩15–25k</span><span class="tag tf">☕ Daelim Warehouse 大林仓库</span><span class="tag tt">🚕 ₩18,000 from Gangnam</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">1:00 PM</div>
+        <div class="tl-act-en" contenteditable="true">Lunch · Seongsu Area</div>
+        <div class="tl-act-cn" contenteditable="true">午餐 · 圣水洞</div>
+        <div class="tl-desc-en" contenteditable="true"></div>
+        <div class="tl-desc-cn" contenteditable="true"></div>
+        <div class="meal-opts"><div class="meal-opts-hdr">🍽️ 午餐选项 Seongsu Lunch</div><div class="meal-opt"><div class="mr r1">1</div><div><div class="meal-name-en" contenteditable="true">Kkubdang 꿀당 (Michelin Rec)</div><div class="meal-name-cn" contenteditable="true">蜜糖 · 15天熟成猪颈肉</div><div class="meal-det" contenteditable="true">Famous 15-day aged pork neck (목살). Book via Naver or walk-in early. ₩80,000–120,000 (RM216–324)/pax</div></div></div><div class="meal-opt"><div class="mr r2">2</div><div><div class="meal-name-en" contenteditable="true">Spring Garden 성수 (Walk-in)</div><div class="meal-name-cn" contenteditable="true">圣水春花园 · 本地人爱去</div><div class="meal-det" contenteditable="true">Pasta + Korean fusion. Walk-in friendly. ₩15,000–25,000 (RM40–67)/pax</div></div></div></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">2:30 PM</div>
+        <div class="tl-act-en" contenteditable="true">신사동 가로수길 Sinsa-dong Garosu-gil</div>
+        <div class="tl-act-cn" contenteditable="true">新沙洞林荫道 · 梧桐树购物街</div>
+        <div class="tl-desc-en" contenteditable="true">Taxi ~25 min from Seongsu (₩20,000). Ginkgo tree-lined boulevard — the most pleasant street to walk in Seoul. Independent boutiques, specialty cafés, concept stores. More relaxed than Apgujeong. Walk the main street plus side alleys (Eonju-ro 17-gil) for the best finds.</div>
+        <div class="tl-desc-cn" contenteditable="true">从圣水洞打的约25分钟（₩20,000）。银杏树成荫大道——首尔最适合漫步的街道。独立精品店、精品咖啡、概念店。比狎鸥亭更轻松惬意。逛主街加小巷（鱼珠路17街）有最好的发现。</div>
+        <div class="tl-tags"><span class="tag ts">🛍️ 独立精品 · 概念店</span><span class="tag tf">☕ Specialty Coffee</span><span class="tag tt">🚕 ₩20,000 from Seongsu</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">4:00 PM</div>
+        <div class="tl-act-en" contenteditable="true">압구정 Apgujeong + Galleria</div>
+        <div class="tl-act-cn" contenteditable="true">狎鸥亭 + 嘉柏丽尔百货 · 首尔最高端购物</div>
+        <div class="tl-desc-en" contenteditable="true">Walk or taxi 5 min from Garosu-gil — they're neighbours. Galleria Department Store: Chanel, Dior, Bottega Veneta, Celine, Hermes, LV — all flagship stores in one building. Also: Apgujeong Rodeo Street for Korean designer labels. Fully air-conditioned.</div>
+        <div class="tl-desc-cn" contenteditable="true">从林荫道步行或打的5分钟——两处相邻。嘉柏丽尔百货：香奈儿、迪奥、葆蝶家、赛琳、爱马仕、LV——全部旗舰店集于一栋。另有：狎鸥亭Rodeo街韩国设计师品牌。全程冷气。</div>
+        <div class="tl-tags"><span class="tag ts">🛍️ Galleria · Chanel · Dior · Celine · LV</span><span class="tag tt">🚶 5min from Garosu-gil</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">6:30 PM</div>
+        <div class="tl-act-en" contenteditable="true">Dinner · Apgujeong / Gangnam Area</div>
+        <div class="tl-act-cn" contenteditable="true">晚餐 · 狎鸥亭/江南附近</div>
+        <div class="tl-desc-en" contenteditable="true"></div>
+        <div class="tl-desc-cn" contenteditable="true"></div>
+        <div class="meal-opts"><div class="meal-opts-hdr">🍽️ 晚餐选项 Dinner — Before Han River</div><div class="meal-opt"><div class="mr r1">1</div><div><div class="meal-name-en" contenteditable="true">Jung Sik Dang 정식당 (Michelin 2★)</div><div class="meal-name-cn" contenteditable="true">正食堂 · 现代韩国Fine Dining</div><div class="meal-det" contenteditable="true">Most bookable Michelin in Seoul. Try Catch Table App. ₩200,000–280,000 (RM540–756)/pax</div></div></div><div class="meal-opt"><div class="mr r2">2</div><div><div class="meal-name-en" contenteditable="true">Hojokban 호조반 (Dosan Park)</div><div class="meal-name-cn" contenteditable="true">道山公园旁 · 现代韩食</div><div class="meal-det" contenteditable="true">Semi-private booths. Try Naver or walk-in. ₩80,000–120,000 (RM216–324)/pax</div></div></div><div class="meal-opt"><div class="mr r3">3</div><div><div class="meal-name-en" contenteditable="true">Apgujeong Walk-in</div><div class="meal-name-cn" contenteditable="true">狎鸥亭附近随意选</div><div class="meal-det" contenteditable="true">Multiple quality options near Galleria. ₩30,000–80,000 (RM81–216)/pax</div></div></div></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">9:00 PM</div>
+        <div class="tl-act-en" contenteditable="true">🌉 한강 Han River Picnic · 치맥 Chimaek Night</div>
+        <div class="tl-act-cn" contenteditable="true">汉江野餐 · 炸鸡啤酒之夜 · 彩虹喷泉</div>
+        <div class="tl-desc-en" contenteditable="true">Taxi ~15 min from Apgujeong to Banpo Hangang Park (₩15,000). Buy fried chicken + Cass beer from the GS25 convenience store at the park. Spread out on the grass by the river. Rainbow Fountain show along Banpo Bridge ~9–10pm — coloured water jets lit against the night sky. 22°C night breeze. Seoul locals do this every summer weekend. The most authentic Seoul experience of the trip.</div>
+        <div class="tl-desc-cn" contenteditable="true">从狎鸥亭打的约15分钟至盘浦汉江公园（₩15,000）。在公园GS25便利店买炸鸡+Cass啤酒。在江边草坪铺开来。盘浦大桥彩虹喷泉约晚上9–10点表演。22°C夜风。首尔人每个夏天周末都会来。全程最authentic的首尔体验。</div>
+        <div class="tl-tags"><span class="tag tn">🌈 彩虹喷泉 Rainbow Fountain 9–10PM</span><span class="tag tf">🍗 치맥 Chimaek ₩25,000–35,000</span><span class="tag tt">🚕 ₩15,000 from Apgujeong</span><span class="tag tv">🦟 带防蚊液！</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">11:00 PM</div>
+        <div class="tl-act-en" contenteditable="true">Back to Hotel</div>
+        <div class="tl-act-cn" contenteditable="true">返回酒店</div>
+        <div class="tl-desc-en" contenteditable="true">Taxi ~20 min back to Gangnam. Tomorrow is an easy farewell morning.</div>
+        <div class="tl-desc-cn" contenteditable="true">打的约20分钟返回江南。明天是轻松的告别早晨。</div>
+        <div class="tl-tags"><span class="tag tt">🚕 ₩20,000 back to Gangnam</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sec-head fi" id="day4" style="margin-top:2rem"><h2>Day 4 <small>6 August (Wed) · ⚠️ MH065 departs ICN 16:45 — leave hotel no later than 1:15pm</small></h2><div class="sec-line"></div></div>
+<div class="day-card fi">
+  <div class="day-header" onclick="toggleDay(this)">
+    <div class="day-num" style="background:linear-gradient(135deg,#F4A261,#E76F51)"><div class="day-num-big">4</div><div class="day-num-lbl">Day</div></div>
+    <div class="day-meta">
+      <div class="day-title-en" contenteditable="true">COEX Starfield Library · Olive Young · Last Lunch · MH065</div>
+      <div class="day-title-cn" contenteditable="true">COEX星空图书馆 · 悦诗风吟手信 · 最后午餐 · 飞回吉隆坡</div>
+      <div class="day-date">6 August (Wed) · ⚠️ MH065 departs ICN 16:45 — leave hotel no later than 1:15pm</div>
+    </div>
+    <div class="day-weather">🌤️ 28°C</div>
+    <div class="day-toggle">▼</div>
+  </div>
+  <div class="day-body">
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">10:30 AM</div>
+        <div class="tl-act-en" contenteditable="true">Last Hotel Breakfast · Savour It</div>
+        <div class="tl-act-cn" contenteditable="true">最后一顿酒店早餐 · 慢慢享用</div>
+        <div class="tl-desc-en" contenteditable="true">Look out the window one last time. Today is the goodbye day. Keep it slow and enjoyable.</div>
+        <div class="tl-desc-cn" contenteditable="true">最后看一眼窗外的首尔。今天是告别日。保持悠闲，好好享受。</div>
+        
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">11:15 AM</div>
+        <div class="tl-act-en" contenteditable="true">COEX Starfield Library · SM Town · Olive Young</div>
+        <div class="tl-act-cn" contenteditable="true">COEX 星空图书馆 · SM Town · 悦诗风吟</div>
+        <div class="tl-desc-en" contenteditable="true">5-min walk from most Gangnam hotels. Starfield Library: 13-metre-high bookshelves, dramatic architecture — one of the most photographed spots in Seoul. Free entry. SM Town flagship for K-pop fans. Olive Young (Korea's biggest K-beauty chain): stock up on skincare, sheet masks, snacks to bring home.</div>
+        <div class="tl-desc-cn" contenteditable="true">距大部分江南酒店步行5分钟。星空图书馆：13米高书架，首尔最多打卡地之一，免费入场。K-pop粉丝必去SM Town旗舰店。悦诗风吟（韩国最大美妆连锁）：补货护肤品、面膜、零食手信带回家。</div>
+        <div class="tl-tags"><span class="tag tc">📚 Starfield Library 免费 Free</span><span class="tag ts">💄 Olive Young 美妆手信</span><span class="tag ts">🎵 SM Town K-pop</span><span class="tag tt">🚶 5min walk from hotel</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">12:30 PM</div>
+        <div class="tl-act-en" contenteditable="true">Last Lunch in Seoul</div>
+        <div class="tl-act-cn" contenteditable="true">首尔最后一顿午餐</div>
+        <div class="tl-desc-en" contenteditable="true"></div>
+        <div class="tl-desc-cn" contenteditable="true"></div>
+        <div class="meal-opts"><div class="meal-opts-hdr">🍱 最后午餐 Last Lunch · Make It Count</div><div class="meal-opt"><div class="mr r1">1</div><div><div class="meal-name-en" contenteditable="true">Budnamujib 부남집 (1977 Michelin)</div><div class="meal-name-cn" contenteditable="true">富南家 · 1977年老字号 · 牛肋骨汤</div><div class="meal-det" contenteditable="true">Legendary Galbitang — clear beef rib soup, 50 years old. Walk-in. ₩50,000–80,000 (RM135–216)/pax</div></div></div><div class="meal-opt"><div class="mr r2">2</div><div><div class="meal-name-en" contenteditable="true">Jinmi Pyongyang Naengmyeon 진미평양냉면</div><div class="meal-name-cn" contenteditable="true">真味平壤冷面 · 清爽收尾</div><div class="meal-det" contenteditable="true">Light, refreshing cold noodles — perfect farewell. Walk-in. ₩15,000–20,000 (RM40–54)/pax</div></div></div><div class="meal-opt"><div class="mr r3">3</div><div><div class="meal-name-en" contenteditable="true">COEX Food Court (Easiest)</div><div class="meal-name-cn" contenteditable="true">COEX美食广场 · 最方便</div><div class="meal-det" contenteditable="true">Multiple quality options, no travel needed. ₩15,000–35,000 (RM40–94)/pax</div></div></div></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">1:00 PM</div>
+        <div class="tl-act-en" contenteditable="true">Hotel Check-Out · Last Coffee</div>
+        <div class="tl-act-cn" contenteditable="true">退房 · 最后一杯首尔咖啡</div>
+        <div class="tl-desc-en" contenteditable="true">Collect luggage. One last coffee at hotel lobby or COEX café before heading to the airport.</div>
+        <div class="tl-desc-cn" contenteditable="true">取回行李。在酒店大堂或COEX咖啡店喝最后一杯咖啡。</div>
+        <div class="tl-tags"><span class="tag th">☕ Last Seoul Coffee</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">1:15 PM ⚠️</div>
+        <div class="tl-act-en" contenteditable="true">Hotel Car → Incheon Airport · Must Leave by 1:15pm</div>
+        <div class="tl-act-cn" contenteditable="true">酒店专车 → 仁川机场 · 必须1:15出发</div>
+        <div class="tl-desc-en" contenteditable="true">Pre-arranged hotel car (~1 hour to ICN). August peak season — check-in + immigration takes longer. MH065 departs 16:45. Arrive airport by 14:00 minimum. Do NOT cut it close. 안녕히 계세요 — Goodbye, Seoul.</div>
+        <div class="tl-desc-cn" contenteditable="true">提前预约酒店专车（约1小时至仁川）。8月旺季——值机+过关比平时耗时更长。MH065 16:45起飞。最迟14:00必须抵达机场。千万不要卡时间。안녕히 계세요 — 再见，首尔。</div>
+        <div class="tl-tags"><span class="tag tt">🚗 私家车 ₩150,000</span><span class="tag tt">✈️ MH065 · ICN 16:45 → KUL 22:15</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end main -->
+
+<footer>
+  <p style="font-size:1.4rem;margin-bottom:.75rem">✈️ 🇰🇷 🍜 🛍️ 🌉</p>
+  <p>为 <strong>JC</strong> 用心制作 · Made with love · August 2026</p>
+</footer>
+
+<div class="edit-toggle">
+  <button class="save-btn" id="saveBtn" onclick="saveHTML()">💾 保存 Save HTML</button>
+  <button class="edit-btn" id="editBtn" onclick="toggleEditMode()">✏️ 编辑 Edit</button>
+</div>
+
+<script>
+const sc=document.getElementById('stars');
+for(let i=0;i<80;i++){const s=document.createElement('div');s.className='star';const z=Math.random()*2+1;s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${z}px;height:${z}px;animation-delay:${Math.random()*3}s;animation-duration:${2+Math.random()*2}s`;sc.appendChild(s);}
+function toggleDay(h){h.parentElement.classList.toggle('open')}
+function goDay(id,btn){const el=document.getElementById(id);if(el)window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});document.querySelectorAll('.day-pill').forEach(p=>p.classList.remove('active'));btn.classList.add('active');}
+let editMode=false;
+const SEL='.tl-act-en,.tl-act-cn,.tl-desc-en,.tl-desc-cn,.day-title-en,.day-title-cn,.meal-name-en,.meal-name-cn,.meal-det,.flight-info';
+function toggleEditMode(){editMode=!editMode;const btn=document.getElementById('editBtn'),sv=document.getElementById('saveBtn'),bn=document.getElementById('editBanner');if(editMode){btn.textContent='✅ 完成 Done';btn.classList.add('active');sv.classList.add('vis');bn.classList.add('vis');document.querySelectorAll(SEL).forEach(el=>el.setAttribute('contenteditable','true'));}else{btn.textContent='✏️ 编辑 Edit';btn.classList.remove('active');bn.classList.remove('vis');document.querySelectorAll('[contenteditable]').forEach(el=>el.removeAttribute('contenteditable'));}}
+function saveHTML(){document.getElementById('editBanner').classList.remove('vis');const blob=new Blob(['<!DOCTYPE html>\n'+document.documentElement.outerHTML],{type:'text/html'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='seoul-trip-2026.html';a.click();const b=document.getElementById('saveBtn');b.textContent='✅ 已保存!';setTimeout(()=>{b.textContent='💾 保存 Save HTML'},2000);}
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')});},{threshold:.08});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+document.querySelector('.day-card').classList.add('open');
+</script>
+</body>
+</html>
